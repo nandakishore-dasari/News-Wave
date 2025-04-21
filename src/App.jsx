@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/Home';
-import Category from './pages/category';
-import Article from './pages/article';
-import Bookmarks from './pages/BookMarks';
+import Category from './pages/Category';
+import Article from './pages/Article';
+import Bookmarks from './pages/Bookmarks';
 import ThemeToggle from './components/ThemeToggle';
 import { ThemeProvider } from './context/ThemeContext';
 import './styles.css';
