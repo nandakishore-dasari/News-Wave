@@ -2,9 +2,10 @@ import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 const BASE_URL = 'https://newsapi.org/v2';
+const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
 const newsApi = axios.create({
-  baseURL: BASE_URL,
+  baseURL: CORS_PROXY + BASE_URL,
   headers: {
     'X-Api-Key': API_KEY,
     'Accept': 'application/json',
