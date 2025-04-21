@@ -1,20 +1,10 @@
 import axios from 'axios';
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const BASE_URL = 'https://newsapi.org/v2';
-
-const newsApi = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'X-Api-Key': API_KEY,
-    'Accept': 'application/json',
-  },
-  timeout: 10000, // 10 seconds timeout
-});
+const BASE_URL = '/.netlify/functions/news';
 
 export const fetchTopHeadlines = async () => {
   try {
-    const response = await newsApi.get('/top-headlines', {
+    const response = await axios.get(BASE_URL, {
       params: {
         country: 'us',
         pageSize: 10,
@@ -38,7 +28,7 @@ export const fetchTopHeadlines = async () => {
 
 export const fetchCategoryNews = async (category) => {
   try {
-    const response = await newsApi.get('/top-headlines', {
+    const response = await axios.get(BASE_URL, {
       params: {
         country: 'us',
         category: category,
