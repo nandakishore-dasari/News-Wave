@@ -6,10 +6,6 @@ const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 
 const newsApi = axios.create({
   baseURL: CORS_PROXY + encodeURIComponent(BASE_URL),
-  headers: {
-    'X-Api-Key': API_KEY,
-    'Accept': 'application/json',
-  },
   timeout: 10000,
 });
 
@@ -19,6 +15,7 @@ export const fetchTopHeadlines = async () => {
       params: {
         country: 'us',
         pageSize: 10,
+        apiKey: API_KEY
       },
     });
     return response.data?.articles || [];
@@ -35,6 +32,7 @@ export const fetchCategoryNews = async (category) => {
         country: 'us',
         category: category,
         pageSize: 10,
+        apiKey: API_KEY
       },
     });
     return response.data?.articles || [];
