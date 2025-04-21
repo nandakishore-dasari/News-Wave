@@ -5,14 +5,18 @@ import { addBookmark, removeBookmark, isBookmarked } from '../utils/bookmarks';
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const loadArticles = async () => {
       try {
+        setLoading(true);
+        setError(null);
         const data = await fetchTopHeadlines();
-        setArticles(data);
+        setArticles(data || []);
       } catch (error) {
         console.error('Error fetching articles:', error);
+        setError('Failed to load articles. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -27,11 +31,20 @@ const Home = () => {
     } else {
       addBookmark(article);
     }
-    // Force re-render
     setArticles([...articles]);
   };
 
-  if (loading) return <div className="loading">Loading news articles...</div>;
+  if (loading) {
+    return <div className="loading">Loading news articles...</div>;
+  }
+
+  if (error) {
+    return <div className="error">{error}</div>;
+  }
+
+  if (!articles || articles.length === 0) {
+    return <div className="no-articles">No articles found.</div>;
+  }
 
   return (
     <div className="container">
@@ -39,7 +52,7 @@ const Home = () => {
       <div className="articles-grid">
         {articles.map((article) => (
           <div key={article.url} className="article-card">
-            <img src={article.urlToImage} alt={article.title} />
+            <img src={article.urlToImage || 'https://via.placeholder.com/400x200'} alt={article.title} />
             <div className="article-card-content">
               <h2>{article.title}</h2>
               <p>{article.description}</p>
