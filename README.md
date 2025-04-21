@@ -1,12 +1,26 @@
-# React + Vite
+# NEWSWAVE - Modern News Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NEWSWAVE is a cool, modern news application built with React that provides users with a seamless news browsing experience. The application features a clean interface, dark/light theme support, and bookmarking functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📰 **News Browsing**: Browse through various news categories
+- 🌓 **Theme Support**: Toggle between dark and light themes
+- 📚 **Bookmarking**: Save your favorite articles for later
+- 📱 **Responsive Design**: Works on all device sizes
+- ⚡ **Fast Performance**: Built with modern React practices
 
-## Expanding the ESLint configuration
+## Categories
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Technology
+- Sports
+- Business
+- Entertainment
+
+## Tech Stack
+
+- React
+- React Router
+- Context API
+- CSS with Custom Variables
+- Local Storage for Bookmarks
