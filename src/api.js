@@ -11,6 +11,7 @@ const newsApi = axios.create({
 
 export const fetchTopHeadlines = async () => {
   try {
+    console.log('Fetching headlines with API key:', API_KEY);
     const response = await newsApi.get('/top-headlines', {
       params: {
         country: 'us',
@@ -18,6 +19,7 @@ export const fetchTopHeadlines = async () => {
         apiKey: API_KEY
       },
     });
+    console.log('API Response:', response.data);
     return response.data?.articles || [];
   } catch (error) {
     console.error('Error fetching top headlines:', error);
@@ -27,6 +29,7 @@ export const fetchTopHeadlines = async () => {
 
 export const fetchCategoryNews = async (category) => {
   try {
+    console.log(`Fetching ${category} news with API key:`, API_KEY);
     const response = await newsApi.get('/top-headlines', {
       params: {
         country: 'us',
@@ -35,6 +38,7 @@ export const fetchCategoryNews = async (category) => {
         apiKey: API_KEY
       },
     });
+    console.log(`API Response for ${category}:`, response.data);
     return response.data?.articles || [];
   } catch (error) {
     console.error(`Error fetching ${category} news:`, error);
