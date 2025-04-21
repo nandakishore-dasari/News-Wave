@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const BASE_URL = 'https://newsapi.org/v2';
+const BASE_URL = `https://newsapi.org/v2?apiKey=${API_KEY}`;
 const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 
 const newsApi = axios.create({
@@ -16,7 +16,6 @@ export const fetchTopHeadlines = async () => {
       params: {
         country: 'us',
         pageSize: 10,
-        apiKey: API_KEY
       },
     });
     console.log('API Response:', response.data);
@@ -35,7 +34,6 @@ export const fetchCategoryNews = async (category) => {
         country: 'us',
         category: category,
         pageSize: 10,
-        apiKey: API_KEY
       },
     });
     console.log(`API Response for ${category}:`, response.data);
