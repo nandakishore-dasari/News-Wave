@@ -18,7 +18,7 @@ function App() {
           <nav>
             <div className="container">
               <div className="nav-links">
-                {/* Site title */}
+                
                 <Link to="/" className="site-title">
                   NEWSWAVE
                 </Link>

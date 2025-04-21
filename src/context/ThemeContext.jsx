@@ -1,23 +1,23 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-// Create theme context
+
 const ThemeContext = createContext();
 
 // Theme provider component
 export function ThemeProvider({ children }) {
-  // State for theme
+ 
   const [theme, setTheme] = useState('dark');
 
-  // Effect to update theme
+
   useEffect(() => {
-    // Update document theme
+    // Updating document theme
     document.documentElement.setAttribute('data-theme', theme);
     
     // Save to localStorage
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Toggle theme function
+  // Toggle 
   const toggleTheme = () => {
     setTheme(prevTheme => {
       if (prevTheme === 'light') {
@@ -41,7 +41,7 @@ export function ThemeProvider({ children }) {
   );
 }
 
-// Custom hook for theme
+// Custom hook usetheme
 export function useTheme() {
   return useContext(ThemeContext);
 } 

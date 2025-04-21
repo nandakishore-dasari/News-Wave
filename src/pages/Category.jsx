@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchByCategory } from '../api';
+import { fetchCategoryNews } from '../api';
 import { addBookmark, removeBookmark, isBookmarked } from '../utils/bookmarks';
 
 const Category = () => {
@@ -11,7 +11,7 @@ const Category = () => {
   useEffect(() => {
     const loadArticles = async () => {
       try {
-        const data = await fetchByCategory(type);
+        const data = await fetchCategoryNews(type);
         setArticles(data);
       } catch (error) {
         console.error('Error fetching articles:', error);
