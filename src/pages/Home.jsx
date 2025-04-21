@@ -10,12 +10,14 @@ const Home = () => {
   useEffect(() => {
     const loadArticles = async () => {
       try {
+        console.log('Starting to load articles...');
         setLoading(true);
         setError(null);
         const data = await fetchTopHeadlines();
-        setArticles(data || []);
+        console.log('Received articles data:', data);
+        setArticles(Array.isArray(data) ? data : []);
       } catch (error) {
-        console.error('Error fetching articles:', error);
+        console.error('Error in loadArticles:', error);
         setError('Failed to load articles. Please try again later.');
       } finally {
         setLoading(false);
@@ -33,6 +35,8 @@ const Home = () => {
     }
     setArticles([...articles]);
   };
+
+  console.log('Current state:', { loading, error, articles });
 
   if (loading) {
     return <div className="loading">Loading news articles...</div>;
@@ -52,10 +56,16 @@ const Home = () => {
       <div className="articles-grid">
         {articles.map((article) => (
           <div key={article.url} className="article-card">
-            <img src={article.urlToImage || 'https://via.placeholder.com/400x200'} alt={article.title} />
+            <img 
+              src={article.urlToImage || 'https://via.placeholder.com/400x200'} 
+              alt={article.title || 'News article image'} 
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/400x200';
+              }}
+            />
             <div className="article-card-content">
-              <h2>{article.title}</h2>
-              <p>{article.description}</p>
+              <h2>{article.title || 'No title available'}</h2>
+              <p>{article.description || 'No description available'}</p>
               <div className="article-actions">
                 <a href={article.url} target="_blank" rel="noopener noreferrer">
                   Read more
